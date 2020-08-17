@@ -29,6 +29,14 @@ with open(pnl_csv, newline='') as csv_file:
 
     # Obtain total pnl for the time period in question
     total_pnl = sum(pnl)
-    print(f"${total_pnl}")
+    # print(f"${total_pnl}")
+
+    # Get average month-to-month change in PnL
+    pnl_change = []
   
+    for i in range(1, len(pnl)):
+        pnl_change.append(pnl[i] - pnl[i-1])
+
+    pnl_avgchange = round(sum(pnl_change) / len(pnl_change), 2)
+    print(f"${pnl_avgchange}")
     
