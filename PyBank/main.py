@@ -2,7 +2,6 @@
 import os
 import csv
 
-
 # Go to file with data
 pnl_csv = os.path.join("Resources","budget_data.csv")
 
@@ -23,11 +22,9 @@ with open(pnl_csv, newline='') as csv_file:
 
     # Obtain total months of data
     total_months = len(months)
-    # print(total_months)
 
     # Obtain total pnl for the time period in question
     total_pnl = sum(pnl)
-    # print(f"${total_pnl}")
 
     # Get average month-to-month change in PnL
     pnl_change = []
@@ -36,13 +33,12 @@ with open(pnl_csv, newline='') as csv_file:
         pnl_change.append(pnl[i] - pnl[i-1])
 
     pnl_avgchange = round(sum(pnl_change) / len(pnl_change), 2)
-    # print(f"${pnl_avgchange}")
 
     # Get greatest increase and greatest decrease in profits
     greatest_increase = max(pnl_change)
     greatest_decrease = min(pnl_change)
 
-
+    # Obtain the month that saw this greatest changes in profit
     greatest_increase_month_list = []
     greatest_decrease_month_list = []
     for index, change in enumerate(pnl_change):
@@ -50,15 +46,12 @@ with open(pnl_csv, newline='') as csv_file:
             greatest_increase_month_list.append(months[index +1])
         elif change == min(pnl_change):
              greatest_decrease_month_list.append(months[index +1])
-    # print(greatest_increase_month)
-    # print(greatest_decrease_month)
 
     # Convert lists in max and min into string for better display
     def convert(string_value, seperator=' '):
         return seperator.join(string_value)
     greatest_increase_month = convert(greatest_increase_month_list)
     greatest_decrease_month = convert(greatest_decrease_month_list)
-
 
     # Print output to terminal
        
@@ -77,7 +70,6 @@ with open(pnl_csv, newline='') as csv_file:
     nl = "\n"
     output_file = open(data_analysis_text, "w")
 
-    output_file.write("\n")
     output_file.write(f"Financial Analysis {nl}")
     output_file.write(f" ---------------------------------------- {nl}")
     output_file.write(f"Total Months: {total_months} {nl}")
@@ -86,5 +78,5 @@ with open(pnl_csv, newline='') as csv_file:
     output_file.write(f"Greatest Increase in Profits: {greatest_increase_month} (${greatest_increase}) {nl}")
     output_file.write(f"Greatest Decrease in Profits: {greatest_decrease_month} (${greatest_decrease}) {nl}")
     output_file.close()
-    
+
    
