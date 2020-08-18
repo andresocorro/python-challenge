@@ -47,3 +47,27 @@ with open(elections_csv, newline='') as csv_file:
     print(f"{candidates[1]}: {candidate1_percentage}% ({candidate1_votes}) ")
     print(f"{candidates[2]}: {candidate2_percentage}% ({candidate2_votes}) ")
     print(f"{candidates[3]}: {candidate3_percentage}% ({candidate3_votes}) ")
+    print("-"*30)
+    print("Winner: {}")
+    print("-"*30)
+
+
+    # print output to text file
+
+    elections_analysis_text = os.path.join("Analysis", "analysis_results.txt")
+
+    nl = "\n"
+    output_file = open(elections_analysis_text, "w")
+
+    output_file.write(f"Election Results {nl}")
+    output_file.write(f" ---------------------------------------- {nl}")
+    output_file.write(f"Total Votes: {total_votes} {nl}")
+    output_file.write(f" ---------------------------------------- {nl}")
+    output_file.write(f" {candidates[0]}: {candidate0_percentage}% ({candidate0_votes}) {nl}")
+    output_file.write(f" {candidates[1]}: {candidate1_percentage}% ({candidate1_votes}) {nl}")
+    output_file.write(f" {candidates[2]}: {candidate2_percentage}% ({candidate2_votes}) {nl}")
+    output_file.write(f" {candidates[3]}: {candidate3_percentage}% ({candidate3_votes}) {nl}")
+    output_file.write(f" ---------------------------------------- {nl}")
+    output_file.write(f"Winner: {}")
+    output_file.write(f" ---------------------------------------- {nl}")
+    output_file.close()
