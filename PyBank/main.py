@@ -39,19 +39,19 @@ with open(pnl_csv, newline='') as csv_file:
     greatest_decrease = min(pnl_change)
 
     # Obtain the month that saw this greatest changes in profit
-    greatest_increase_month_list = []
-    greatest_decrease_month_list = []
+    greatest_increase_month = []
+    greatest_decrease_month = []
     for index, change in enumerate(pnl_change):
         if change == max(pnl_change):
-            greatest_increase_month_list.append(months[index +1])
+            greatest_increase_month.append(months[index +1])
         elif change == min(pnl_change):
-             greatest_decrease_month_list.append(months[index +1])
+             greatest_decrease_month.append(months[index +1])
 
     # Convert lists in max and min into string for better display
     def convert(string_value, seperator=' '):
         return seperator.join(string_value)
-    greatest_increase_month = convert(greatest_increase_month_list)
-    greatest_decrease_month = convert(greatest_decrease_month_list)
+    greatest_increase_month = convert(greatest_increase_month)
+    greatest_decrease_month = convert(greatest_decrease_month)
 
     # Print output to terminal
        
